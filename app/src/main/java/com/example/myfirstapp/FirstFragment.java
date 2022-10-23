@@ -17,7 +17,7 @@ public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
     TextView showCountTextView;
-    /*
+    
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -30,29 +30,9 @@ public class FirstFragment extends Fragment {
 
         return fragmentFirstLayout;
     }
-*/
-    @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
-
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
-        return binding.getRoot();
-
-    }
-
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        binding.randomButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });
 
         view.findViewById(R.id.random_button).setOnClickListener(new View.OnClickListener() {
             @Override
