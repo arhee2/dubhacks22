@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>FirstFragment.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+FirstFragment.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myfirstapp</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.fragment.app.Fragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.navigation.fragment.NavHostFragment</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.example.myfirstapp.databinding.FragmentFirstBinding</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">FirstFragment </span><span class="s0">extends </span><span class="s1">Fragment {</span>
+
+    <span class="s0">private </span><span class="s1">FragmentFirstBinding binding</span><span class="s0">;</span>
+    <span class="s1">TextView showCountTextView</span><span class="s0">;</span>
+    <span class="s2">/* 
+    @Override 
+    public View onCreateView( 
+            LayoutInflater inflater, ViewGroup container, 
+            Bundle savedInstanceState 
+    ) { 
+        // Inflate the layout for this fragment 
+        View fragmentFirstLayout = inflater.inflate(R.layout.fragment_first, container, false); 
+        // Get the count text view 
+        showCountTextView = fragmentFirstLayout.findViewById(R.id.textview_first); 
+ 
+        return fragmentFirstLayout; 
+    } 
+*/</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">View onCreateView(</span>
+            <span class="s1">LayoutInflater inflater</span><span class="s0">, </span><span class="s1">ViewGroup container</span><span class="s0">,</span>
+            <span class="s1">Bundle savedInstanceState</span>
+    <span class="s1">) {</span>
+
+        <span class="s1">binding = FragmentFirstBinding.inflate(inflater</span><span class="s0">, </span><span class="s1">container</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">return </span><span class="s1">binding.getRoot()</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+
+    <span class="s0">public void </span><span class="s1">onViewCreated(@NonNull View view</span><span class="s0">, </span><span class="s1">Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onViewCreated(view</span><span class="s0">, </span><span class="s1">savedInstanceState)</span><span class="s0">;</span>
+
+        <span class="s1">binding.randomButton.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">NavHostFragment.findNavController(FirstFragment.</span><span class="s0">this</span><span class="s1">)</span>
+                        <span class="s1">.navigate(R.id.action_FirstFragment_to_SecondFragment)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">view.findViewById(R.id.random_button).setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">NavHostFragment.findNavController(FirstFragment.</span><span class="s0">this</span><span class="s1">)</span>
+                        <span class="s1">.navigate(R.id.action_FirstFragment_to_SecondFragment)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">view.findViewById(R.id.globe_button).setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">Toast myToast = Toast.makeText(getActivity()</span><span class="s0">, </span><span class="s3">&quot;Hello toast!&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT)</span><span class="s0">;</span>
+                <span class="s1">myToast.show()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">view.findViewById(R.id.count_button).setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">countMe(view)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s0">private void </span><span class="s1">countMe(View view) {</span>
+                <span class="s2">// Get the value of the text view</span>
+                <span class="s1">String countString = showCountTextView.getText().toString()</span><span class="s0">;</span>
+                <span class="s2">// Convert value to a number and increment it</span>
+                <span class="s1">Integer count = Integer.parseInt(countString)</span><span class="s0">;</span>
+                <span class="s1">count++</span><span class="s0">;</span>
+                <span class="s2">// Display the new value in the text view.</span>
+                <span class="s1">showCountTextView.setText(count.toString())</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+
+    <span class="s1">}</span>
+
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onDestroyView() {</span>
+        <span class="s0">super</span><span class="s1">.onDestroyView()</span><span class="s0">;</span>
+        <span class="s1">binding = </span><span class="s0">null;</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span></pre>
+</body>
+</html>
